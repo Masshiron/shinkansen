@@ -1,0 +1,17 @@
+{
+    "botid": "711333392981032961",
+    "prefix": ".",
+    "owner_id": "210528791716429825",
+    "channel_id": "754482875335966873",
+    "version": "0.3b",
+    "timezones": [
+        "BRT-3;America/Sao_Paulo",
+        "EST-4;America/New_York",
+        "CST-6;America/Regina",
+        "CDT-5;America/Chicago",
+        "PST-8;America/Los_Angeles"
+    ],
+    "default_messages": {
+        "invalid_arguments": "Error! Invalid arguments!"
+    }
+}

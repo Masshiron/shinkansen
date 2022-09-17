@@ -1,0 +1,27 @@
+{
+  "name": "shinkansen-limited",
+  "version": "1.0.0",
+  "description": "discord bot that padronizes timestamp for FFXIV Hunts",
+  "main": "app.js",
+  "dependencies": {
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0",
+    "moment": "^2.29.0",
+    "moment-timezone": "^0.5.31",
+    "sqlite3": "^5.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/masshiro-iro/shinkansen-limited.git"
+  },
+  "author": "masshiro iro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/masshiro-iro/shinkansen-limited/issues"
+  },
+  "homepage": "https://github.com/masshiro-iro/shinkansen-limited#readme"
+}
