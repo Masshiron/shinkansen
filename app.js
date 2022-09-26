@@ -71,6 +71,10 @@ function getActivity(db){
     })
 }
 
+function argDateParse(date) {
+    return moment(new Date(new Date() - (date * 1000 * 60)))
+}
+
 function strToDb(str){
     return str.replace("'", "''")
 }
@@ -134,7 +138,9 @@ client.on('message', async message => {
                     exp_id  = 5
                     break;
             }
-            
+            if (args[0].startsWith('-') && args[0].length > 1) {
+                time = argDateParse(args.shift().slice(1))
+            }
             let desc    = args.join(' ')
 
             let sql = `INSERT INTO trn_train (
@@ -182,4 +188,4 @@ client.on('message', async message => {
 
 });
 
-client.login(process.env.BOT_TOKEN); 
+client.login(process.env.BOT_TOKEN);
