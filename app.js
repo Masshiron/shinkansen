@@ -138,7 +138,7 @@ client.on('message', async message => {
                     exp_id  = 5
                     break;
             }
-            if (args[0].startsWith('-') && args[0].length > 1) {
+            if (args.length > 0 && args[0].startsWith('-') && args[0].length > 1) {
                 time = argDateParse(args.shift().slice(1))
             }
             let desc    = args.join(' ')
