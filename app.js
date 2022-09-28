@@ -1,5 +1,11 @@
 const Discord   = require('discord.js');
-const client    = new Discord.Client();
+const client    = new Discord.Client({
+    intents: [
+        Discord.GatewayIntentBits.Guilds,
+        Discord.GatewayIntentBits.GuildMessages,
+        Discord.GatewayIntentBits.MessageContent,
+    ]
+});
 const config    = require('./config.json');
 const moment    = require('moment-timezone');
 const sqlite3   = require('sqlite3').verbose();
@@ -83,7 +89,7 @@ client.on('ready', () => {
     getActivity(db)
 });
 
-client.on('message', async message => {
+client.on('messageCreate', async (message) => {
     if(message.author.bot) return;
     if(!message.content.startsWith(config.prefix)) {
         if (message.channel.id == config.channel_id){
@@ -116,7 +122,7 @@ client.on('message', async message => {
             ]
         };
 
-        message.channel.send({ embed: statEmbed })
+        message.channel.send({ embeds: [statEmbed] })
     }
     
     if (command === 'sb' || command === 'shb' || command == 'ew') {
@@ -170,15 +176,15 @@ client.on('message', async message => {
                     ebDesc += `\`\`${time.clone().tz(zone).format('HH:mm')} ${timezone}\`\`\n`
                 }
 
-                let sbEmbed = new Discord.MessageEmbed()
+                let sbEmbed = new Discord.EmbedBuilder()
                     .setColor('#ff8282')
                     .setTitle(`[${exp}] ${args.join(' ')}`)
                     .setDescription(ebDesc)
-                    .setFooter(`Relayed by ${message.author.tag}`);
+                    .setFooter({ text: `Relayed by ${message.author.tag}`});
 
                 console.log('== [OK] New train saved!');
                 getActivity(db);
-                message.channel.send(sbEmbed);
+                message.channel.send({ embeds: [sbEmbed] });
                 message.delete()
             })
         } else {
